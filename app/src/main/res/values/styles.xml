@@ -1,0 +1,14 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <item name="colorAccent">@color/color_secondary</item>
+        <item name="colorPrimaryDark">@color/color_primary</item>
+    </style>
+
+</resources>

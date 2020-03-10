@@ -1,0 +1,2 @@
+rootProject.name='Android Libs'
+include ':app', ':lib_databinding_tool', ':lib_net', ':lib_loading_view'

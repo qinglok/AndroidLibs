@@ -1,0 +1,15 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // Gson
+    implementation "com.google.code.gson:gson:2.8.6"
+    // 网络
+    implementation "com.squareup.okhttp3:okhttp:3.12.1"
+    // 日志打印
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
