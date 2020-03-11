@@ -1,23 +1,28 @@
 package x.being.androidlibs
 
 import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.blankj.utilcode.util.ToastUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_main.*
+import x.being.androidlibs.model.JsonResult
+import x.being.androidlibs.model.Status
+import x.being.androidlibs.widget.base.BaseActivity
+import x.being.androidlibs.widget.initToolbar
+import x.being.androidlibs.widget.safeHttpCallback
 import x.being.lib_databinding_tool.BindingTool
 import x.being.lib_loading_view.LoadingView
 import x.being.lib_net.RequestWrapper
 import x.being.lib_net.http
 import x.being.lib_net.post
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private val bind by lazy { BindingTool(layoutInflater, root) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initToolbar(subtitle = "this is a demo")
         bind.addShow("Input your info", "Demo")
         bind.addInputText("k1", "Name", "Linx", true)
         bind.addInputText("k2", "Nickname", "Linx", isShow = false)
@@ -58,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                 },
                 onSuccess = { rs ->
                     ToastUtils.showShort(rs?.message)
-                    if(rs?.status == Status.OK){
+                    if (rs?.status == Status.OK) {
                         //TODO
                     }
                 }

@@ -1,4 +1,4 @@
-package x.being.androidlibs
+package x.being.androidlibs.widget
 
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Lifecycle
@@ -9,6 +9,8 @@ import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import x.being.androidlibs.model.JsonResult
+import x.being.androidlibs.model.Status
 import x.being.lib_net.HttpCallback
 
 fun <T> LifecycleOwner.safeHttpCallback(

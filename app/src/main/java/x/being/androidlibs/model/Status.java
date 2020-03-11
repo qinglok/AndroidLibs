@@ -1,4 +1,4 @@
-package x.being.androidlibs;
+package x.being.androidlibs.model;
 
 public enum Status {
     OK,

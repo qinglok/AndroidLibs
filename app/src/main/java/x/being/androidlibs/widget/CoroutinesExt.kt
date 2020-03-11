@@ -1,4 +1,4 @@
-package x.being.androidlibs
+package x.being.androidlibs.widget
 
 import android.os.Handler
 import kotlinx.coroutines.CoroutineScope
