@@ -70,11 +70,11 @@ fun <T> LifecycleOwner.safeHttpCallback(
                     error -> {
                         LogUtils.e(status.throwable)
                         LogUtils.file(status)
-                        ToastUtils.showLong("no net")
+                        ToastUtils.showShort(status.throwable?.message)
                         onError(status.throwable)
                     }
                     error403 -> {
-                        ToastUtils.showLong(status.msg)
+                        ToastUtils.showShort("权限不足！")
                     }
                     error401, loginTimeout -> {
                         showLoginTimeoutDialog()
