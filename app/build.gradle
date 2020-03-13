@@ -56,7 +56,7 @@ dependencies {
     //RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     // BaseRecyclerViewAdapterHelper
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.1'
     //下拉刷新
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
