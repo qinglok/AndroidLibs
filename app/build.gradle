@@ -72,5 +72,4 @@ dependencies {
     implementation project(':lib_loading_view')
     implementation project(':lib_net')
     implementation project(':lib_databinding_tool')
-//    kapt project(':lib_databinding_tool')
 }
