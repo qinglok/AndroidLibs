@@ -9,6 +9,9 @@
 
         <item name="colorAccent">@color/color_secondary</item>
         <item name="colorPrimaryDark">@color/color_primary</item>
+
+        <item name="android:windowBackground">@color/bg</item>
+
     </style>
 
 </resources>
