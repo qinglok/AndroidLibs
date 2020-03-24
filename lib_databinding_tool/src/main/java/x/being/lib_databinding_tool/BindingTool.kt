@@ -48,6 +48,30 @@ class BindingTool(private var layoutInflater: LayoutInflater, private var rootVi
         map[key] = model
     }
 
+    fun addInputTextPassword(
+        key: String,
+        hint: String,
+        value: String? = null,
+        notNull: Boolean = false,
+        isShow: Boolean = true
+    ) {
+        val model = DataBindEntity(hint, value)
+        val binding = createView(InputType.INPUT_TEXT_PASSWORD).apply {
+            setVariable(variableId, model)
+        }
+        binding.root.tag = key
+        binding.root.findViewById<View>(R.id.iv_not_null).visibility =
+            if (notNull) View.VISIBLE else View.GONE
+        binding.root.setOnClickListener { v ->
+            safeClick(v) {
+                v.findViewById<View>(R.id.et).showSoftInput()
+            }
+        }
+        rootView.addView(binding.root)
+        binding.root.visibility = if (isShow) View.VISIBLE else View.GONE
+        map[key] = model
+    }
+
     fun addInputNumber(key: String, hint: String, value: Int? = null, notNull: Boolean = false) {
         val model = DataBindEntity(hint, value?.toString())
         val binding = createView(InputType.INPUT_NUMBER).apply {
@@ -122,6 +146,35 @@ class BindingTool(private var layoutInflater: LayoutInflater, private var rootVi
         map[key] = model
     }
 
+    fun addInputDate(
+        key: String,
+        hint: String,
+        value: String? = null,
+        notNull: Boolean = false,
+        isShow: Boolean = true
+    ) {
+        val model = DataBindEntity(hint, value)
+        val binding = createView(InputType.INPUT_DATE).apply {
+            setVariable(variableId, model)
+        }
+
+        val tv = binding.root.findViewById<TextView>(R.id.tv)
+        tv.text = value
+
+        binding.root.tag = key
+        binding.root.findViewById<View>(R.id.iv_not_null).visibility =
+            if (notNull) View.VISIBLE else View.GONE
+        binding.root.setOnClickListener { v ->
+            safeClick(v) {
+                rootView.hideSoftInput()
+                showDatePicker(key, tv)
+            }
+        }
+        rootView.addView(binding.root)
+        binding.root.visibility = if (isShow) View.VISIBLE else View.GONE
+        map[key] = model
+    }
+
     fun addShow(hint: String, value: String?, @LayoutRes res: Int? = null) {
         val model = DataBindEntity(hint, value)
         val binding = createView(InputType.SHOW_TEXT, res).apply {
@@ -162,6 +215,14 @@ class BindingTool(private var layoutInflater: LayoutInflater, private var rootVi
             DataBindingUtil.inflate<ViewInputTextBinding>(
                 layoutInflater,
                 R.layout.view_input_text,
+                rootView,
+                false
+            )
+        }
+        InputType.INPUT_TEXT_PASSWORD -> {
+            DataBindingUtil.inflate<ViewInputTextBinding>(
+                layoutInflater,
+                R.layout.view_input_text_password,
                 rootView,
                 false
             )
@@ -278,6 +339,7 @@ class BindingTool(private var layoutInflater: LayoutInflater, private var rootVi
     enum class InputType {
         SHOW_TEXT,
         INPUT_TEXT,
+        INPUT_TEXT_PASSWORD,
         INPUT_NUMBER,
         INPUT_DECIMAL,
         INPUT_DATE,
